@@ -17,13 +17,33 @@ app.use(express.static('public'))
 
 app.get('/', (req, res) => {
     res.status(200)
-    res.render('index')
+    res.render('index' , {
+        title: 'Home',
+    } )
 })
 
 
 //<!-- sovorkan havayi zapros -->
+app.get('/home', (req, res) => {
+    res.render('card' , {
+        title: 'home',
+        isHome:true
+    })
+})
+
+app.get('/contact', (req, res) => {
+    res.render('courses' , {
+        title: 'Contact',
+        isContact:true
+    })
+})
+
+
 app.get('/about', (req, res) => {
-    res.render('about')
+    res.render('courses' , {
+        title: 'About',
+        isAbout:true
+    })
 })
 
 
