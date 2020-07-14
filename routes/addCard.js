@@ -1,4 +1,5 @@
 const { Router } = require('express')
+const data = require('../data/json.json')
 
 const router = Router()
 
@@ -9,6 +10,7 @@ router.get('/', (req, res) => {
         isAbout: true
     })
 })
+
 
 router.post('/', (req, res) => {
 
