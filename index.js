@@ -1,6 +1,12 @@
 const express = require('express')
 const path = require('path')
 const exphbs = require('express-handlebars')
+const courses = require('./routes/courses')
+const card = require('./routes/addCard')
+const home = require('./routes/home')
+const contact = require('./routes/contact')
+const add = require('./routes/addCard')
+
 
 const app = express()
 
@@ -9,43 +15,24 @@ const hbs = exphbs.create({
     extname: 'hbs'
 })
 
-app.engine('hbs' , hbs.engine)
+app.engine('hbs', hbs.engine)
 app.set('view engine', 'hbs');
-app.set( 'views' , 'views' )
+app.set('views', 'views')
 
 app.use(express.static('public'))
+app.use(express.urlencoded({ extended: true }))
+app.use('/courses', courses)
+app.use('/about', card)
+app.use('/home', home)
+app.use('/contact', contact)
+app.use( '/add' , add )
 
 app.get('/', (req, res) => {
     res.status(200)
-    res.render('index' , {
+    res.render('index', {
         title: 'Home',
-    } )
-})
-
-
-//<!-- sovorkan havayi zapros -->
-app.get('/home', (req, res) => {
-    res.render('card' , {
-        title: 'home',
-        isHome:true
     })
 })
-
-app.get('/contact', (req, res) => {
-    res.render('courses' , {
-        title: 'Contact',
-        isContact:true
-    })
-})
-
-
-app.get('/about', (req, res) => {
-    res.render('courses' , {
-        title: 'About',
-        isAbout:true
-    })
-})
-
 
 
 const PORT = process.env.PORT || 3000
