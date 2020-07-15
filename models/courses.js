@@ -36,7 +36,6 @@ class Cousres {
                     } else{
                         resolve()
                     }
-               
                 }
             )
         } )
