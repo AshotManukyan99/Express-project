@@ -1,7 +1,7 @@
 const { Router } = require('express')
-const data = require('../data/json.json')
-
 const router = Router()
+const Course = require('../models/courses')
+
 
 
 router.get('/', (req, res) => {
@@ -14,7 +14,8 @@ router.get('/', (req, res) => {
 
 router.post('/', (req, res) => {
 
-    console.log(req.body)
+    const courses = new Course(req.body.Name, req.body.Price, req.body.URL)
+    courses.save()
     res.redirect('/contact')
 })
 

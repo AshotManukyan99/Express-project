@@ -10,14 +10,6 @@ router.get('/', (req, res) => {
     })
 })
 
-router.post( '/add' , (req,res) => {
-    console.log(`Work`);
-    console.log(res.body);
-    res.s
-
-    res.redirect('https://stackoverflow.com')
-
-} )
 
 
 module.exports = router
