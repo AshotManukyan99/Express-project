@@ -13,12 +13,14 @@ class Cousres {
     }
 
     toJson() {
-        return {
+
+        return JSON.stringify({
             title: this.title,
             price: this.price,
             img: this.img,
             id: this.id
         }
+        )
     }
 
     async save() {
@@ -26,19 +28,19 @@ class Cousres {
         courses.push(this.toJson())
         console.log(courses);
 
-        return  new Promise( (resolve, reject) => {
+        return new Promise((resolve, reject) => {
             fs.writeFile(
                 path.join(__dirname, '..', 'data', 'data.json'),
                 JSON.stringify(courses),
                 err => {
                     if (err) {
                         reject(err)
-                    } else{
+                    } else {
                         resolve()
                     }
                 }
             )
-        } )
+        })
     }
 
     static getAll() {
@@ -53,6 +55,8 @@ class Cousres {
             )
         })
     }
+
+
 }
 
 
