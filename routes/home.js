@@ -4,9 +4,8 @@ const router = Router()
 
 
 
-//<!-- sovorkan havayi zapros -->
 router.get('/', (req, res) => {
-    res.render('card' , {
+    res.render('index' , {
         title: 'home',
         isHome:true
     })
