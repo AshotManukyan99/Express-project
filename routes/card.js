@@ -33,7 +33,10 @@ router.post('/add', async (req, res) => {
 router.delete('/remove/:id', async (req, res) => {
 
     await req.user.removeFromCart(req.params.id)
-    const {bag} = await req.user.populate('bag.items.courseId').execPopulate()
+    const {bag} = await req.user
+        .populate('bag.items.courseId')
+        .execPopulate()
+
     const cart = {
         courses: mapCartItems(bag),
         price: computePrice(mapCartItems(bag))

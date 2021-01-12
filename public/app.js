@@ -1,8 +1,12 @@
+/* Ruble icon  */
+
 const toCurrency = price => new Intl.NumberFormat('ru-RU', {
     currency: 'rub',
     style: 'currency'
 }).format(price)
 
+
+/*  Date Convert to Russian */
 
 const toDate = date => {
     return new Intl.DateTimeFormat('ru-RU', {
@@ -24,7 +28,6 @@ document.querySelectorAll('.date').forEach(node => {
 })
 
 const $card = document.querySelector('#card')
-const $btnRemove = document.querySelector('#course-remove')
 
 if ($card) {
     $card.addEventListener('click', (event) => {
@@ -47,8 +50,8 @@ if ($card) {
                                 `
                         }).join('')
 
-                        $card.querySelector("tbody").innerHTML = html
-                        $card.querySelector(".price").textContent = toCurrency(card.price)
+                        $card.querySelector('tbody').innerHTML = html
+                        $card.querySelector('.price').textContent = toCurrency(card.price)
 
                     } else {
                         $card.innerHTML = ` <p> Your Bag is Empty </p> `
@@ -58,6 +61,8 @@ if ($card) {
     })
 }
 
+
+M.Tabs.init(document.querySelectorAll('.tabs'))
 
 
 

@@ -1,0 +1,80 @@
+<div class="auth">
+
+    <div class="row">
+        <div class="col s12">
+            <ul class="tabs">
+                <li class="tab col s3">
+                    <a href="#login">Login</a>
+                </li>
+                <li class="tab col s3">
+                    <a class="active" href="#register">Sign Up</a>
+                </li>
+            </ul>
+        </div>
+        <div id="login" class="col s6 offset-s3">
+
+            <h3> Login </h3>
+
+            <form action="/login" method="POST">
+                <div class="row">
+                    <div class="input-field col s12 offset-s3 ">
+                        <input id="remail" name="email" type="email" class="validate" required>
+                        <label class="active" for="remail">Email</label>
+                        <span class="helper-text" data-error="wrong" data-success="right">Write Email</span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12 offset-s3 ">
+                        <input id="password" name="password" type="password" class="validate" required>
+                        <label class="active" for="password">Password</label>
+                        <span class="helper-text" data-error="wrong" data-success="right">Write Password</span>
+                    </div>
+                </div>
+
+                <label>
+                    <input type="checkbox"/>
+                    <span>Remember Me</span>
+                </label>
+
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+
+        </div>
+
+        <div id="register" class="col s6 offset-s3">
+
+            <h3> Sign Up </h3>
+
+            <form action="/register" method="POST">
+                <div class="row">
+                    <div class="input-field col s12 offset-s3 ">
+                        <input id="remail" name="email" type="email" class="validate" required>
+                        <label class="active" for="remail">Email</label>
+                        <span class="helper-text" data-error="wrong" data-success="right">Write Email</span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12 offset-s3 ">
+                        <input id="password" name="password" type="password" class="validate" required>
+                        <label class="active" for="password">Password</label>
+                        <span class="helper-text" data-error="wrong" data-success="right">Write Password</span>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12 offset-s3 ">
+                        <input id="password" name="password" type="password" class="validate" required>
+                        <label class="active" for="password">Password</label>
+                        <span class="helper-text" data-error="wrong" data-success="right">Write Password</span>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Register</button>
+            </form>
+
+        </div>
+    </div>
+
+</div>

@@ -3,6 +3,16 @@ const Order = require('../models/order')
 
 const router = Router()
 
+function mapOrders(orders) {
+    return orders.map(({_doc, courses}) => ({
+        ...(_doc),
+        price: courses.reduce((acc, curr) => {
+            acc += curr.count * curr.course.price
+            return acc
+        }, 0)
+    }))
+}
+
 
 router.get('/', async (req, res) => {
     try {
@@ -12,13 +22,7 @@ router.get('/', async (req, res) => {
         res.render('orders', {
             isOrder: true,
             title: 'Order',
-            orders: orders.map(o => ({
-                ...o._doc,
-                price: o.courses.reduce( (acc, curr) => {
-                    acc += curr.count * curr.course.price
-                    return acc
-                } , 0 )
-            }))
+            orders: mapOrders(orders)
         })
 
     } catch (e) {

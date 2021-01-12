@@ -1,6 +1,6 @@
 const express = require('express')
 const path = require('path')
-const exphbs = require('express-handlebars')
+const expHbs = require('express-handlebars')
 const mongoose = require('mongoose')
 const Handlebars = require('handlebars')
 const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
@@ -10,18 +10,18 @@ const home = require('./routes/home')
 const add = require('./routes/add')
 const card = require('./routes/card')
 const orders = require('./routes/orders')
+const auth = require('./routes/auth')
 //model
 const User = require('./models/user')
 
 
 const app = express()
 
-const hbs = exphbs.create({
+const hbs = expHbs.create({
     defaultLayout: 'main',
     extname: 'hbs',
     handlebars: allowInsecurePrototypeAccess(Handlebars)
 })
-
 
 app.engine('hbs', hbs.engine)
 app.set('view engine', 'hbs')
@@ -29,14 +29,11 @@ app.set('views', 'views')
 
 app.use(async (req, res, next) => {
     try {
-        const user = await User.findById('5ff9f09e02ebdd1868f95547')
-        req.user = user
+        req.user = await User.findById('5ffc648a23577b0300bffcc1')
         next()
     } catch (e) {
         console.error(e)
     }
-
-
 })
 
 app.use(express.static(path.join(__dirname, 'public')))
@@ -47,13 +44,14 @@ app.use('/', home)
 app.use('/add', add)
 app.use('/card', card)
 app.use('/orders', orders)
+app.use('/auth', auth)
 
 const PORT = process.env.PORT || 3000
-const password = 'LBM5EIt6t6cWrX3g'
+const password = 'AcSHuk6NagJSTfow'
 
 async function start() {
     try {
-        const url = `mongodb+srv://ashot:${password}@cluster0.c36ue.mongodb.net/shop`
+        const url = `mongodb+srv://ashot:${password}@cluster1.ucmvu.mongodb.net/test`
         await mongoose.connect(url, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
