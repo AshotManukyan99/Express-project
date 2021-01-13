@@ -4,6 +4,7 @@ const expHbs = require('express-handlebars')
 const mongoose = require('mongoose')
 const Handlebars = require('handlebars')
 const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
+const session = require('express-session')
 //Routes
 const courses = require('./routes/courses')
 const home = require('./routes/home')
@@ -35,6 +36,10 @@ app.use(async (req, res, next) => {
         console.error(e)
     }
 })
+
+app.use(session({
+
+}))
 
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.urlencoded({extended: true}))

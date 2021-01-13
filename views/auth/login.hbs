@@ -3,11 +3,11 @@
     <div class="row">
         <div class="col s12">
             <ul class="tabs">
-                <li class="tab col s3">
-                    <a href="#login">Login</a>
+                <li class="tab col s6 ">
+                    <a class="active" href="#login">Login</a>
                 </li>
-                <li class="tab col s3">
-                    <a class="active" href="#register">Sign Up</a>
+                <li class="tab col s6 ">
+                    <a href="#register">Sign Up</a>
                 </li>
             </ul>
         </div>
@@ -15,24 +15,24 @@
 
             <h3> Login </h3>
 
-            <form action="/login" method="POST">
+            <form action="/auth/login" method="POST">
                 <div class="row">
-                    <div class="input-field col s12 offset-s3 ">
-                        <input id="remail" name="email" type="email" class="validate" required>
-                        <label class="active" for="remail">Email</label>
+                    <div class="input-field col s12 ">
+                        <input id="email" name="email" type="email" class="validate" required>
+                        <label class="active" for="email">Email</label>
                         <span class="helper-text" data-error="wrong" data-success="right">Write Email</span>
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="input-field col s12 offset-s3 ">
+                    <div class="input-field col s12 ">
                         <input id="password" name="password" type="password" class="validate" required>
                         <label class="active" for="password">Password</label>
                         <span class="helper-text" data-error="wrong" data-success="right">Write Password</span>
                     </div>
                 </div>
 
-                <label>
+                <label class="remember-checkbox">
                     <input type="checkbox"/>
                     <span>Remember Me</span>
                 </label>
@@ -46,9 +46,9 @@
 
             <h3> Sign Up </h3>
 
-            <form action="/register" method="POST">
+            <form action="/auth/register" method="POST">
                 <div class="row">
-                    <div class="input-field col s12 offset-s3 ">
+                    <div class="input-field col s6 col s12 ">
                         <input id="remail" name="email" type="email" class="validate" required>
                         <label class="active" for="remail">Email</label>
                         <span class="helper-text" data-error="wrong" data-success="right">Write Email</span>
@@ -56,18 +56,18 @@
                 </div>
 
                 <div class="row">
-                    <div class="input-field col s12 offset-s3 ">
-                        <input id="password" name="password" type="password" class="validate" required>
-                        <label class="active" for="password">Password</label>
+                    <div class="input-field col s6 col s12 ">
+                        <input id="rpassword" name="rpassword" type="password" class="validate" required>
+                        <label class="active" for="rpassword">Password</label>
                         <span class="helper-text" data-error="wrong" data-success="right">Write Password</span>
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="input-field col s12 offset-s3 ">
-                        <input id="password" name="password" type="password" class="validate" required>
-                        <label class="active" for="password">Password</label>
-                        <span class="helper-text" data-error="wrong" data-success="right">Write Password</span>
+                    <div class="input-field col s6 col s12 ">
+                        <input id="confirm" name="confirm" type="password" class="validate" required>
+                        <label class="active" for="confirm">Repeat Password</label>
+                        <span class="helper-text" data-error="wrong" data-success="right">Repeat  Password</span>
                     </div>
                 </div>
 

@@ -2,9 +2,9 @@ const {Router} = require('express')
 
 const router = Router()
 
-router.get('/', async (req, res) => {
+router.get('/login', async (req, res) => {
 
-    res.render('login', {
+    res.render('auth/login', {
         title: 'Auth',
         isLogin: true
     })
@@ -12,20 +12,18 @@ router.get('/', async (req, res) => {
 
 router.post('/login', async (req, res) => {
 
-    console.log(req.body)
 
-    res.render('login', {
+    res.render('auth/login', {
         title: 'Login',
         isLogin: true
     })
 })
 
-
+    
 router.post('/register', async (req, res) => {
 
-    console.log(req.body)
 
-    res.render('login', {
+    res.render('auth/login', {
         title: 'Register',
         isLogin: true
     })
