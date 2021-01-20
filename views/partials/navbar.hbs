@@ -9,35 +9,43 @@
                 <li><a href="/">Home</a></li>
             {{/if }}
 
-            {{#if isCourses }}
-                <li class="active"><a href="/add"> Add Course</a></li>
-            {{else}}
-                <li><a href="/add">Add Course</a></li>
-            {{/if }}
-
             {{#if isListCourses }}
                 <li class="active"><a href="/courses">Courses</a></li>
             {{else}}
                 <li><a href="/courses">Courses</a></li>
             {{/if }}
 
-            {{#if isCard }}
-                <li class="active"><a href="/card">Bag</a></li>
-            {{else}}
-                <li><a href="/card">Bag</a></li>
-            {{/if }}
+            {{#if isAuth }}
 
-            {{#if isOrder }}
-                <li class="active"><a href="/orders">Orders</a></li>
-            {{else}}
-                <li><a href="/orders">Orders</a></li>
-            {{/if }}
+                {{#if isCourses }}
+                    <li class="active"><a href="/add"> Add Course</a></li>
+                {{else}}
+                    <li><a href="/add">Add Course</a></li>
+                {{/if }}
 
-            {{#if isLogin }}
-                <li class="active"><a href="/auth/login">Login</a></li>
+                {{#if isCard }}
+                    <li class="active"><a href="/card">Bag</a></li>
+                {{else}}
+                    <li><a href="/card">Bag</a></li>
+                {{/if }}
+
+                {{#if isOrder }}
+                    <li class="active"><a href="/orders">Orders</a></li>
+                {{else}}
+                    <li><a href="/orders">Orders</a></li>
+                {{/if }}
+
+                <li><a href="/auth/logout">Logout</a></li>
+
             {{else}}
-                <li><a href="/auth/login">Login</a></li>
-            {{/if }}
+
+                {{#if isLogin }}
+                    <li class="active"><a href="/auth/login">Login</a></li>
+                {{else}}
+                    <li><a href="/auth/login">Login</a></li>
+                {{/if }}
+
+            {{/if}}
 
         </ul>
     </div>

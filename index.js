@@ -5,6 +5,8 @@ const mongoose = require('mongoose')
 const Handlebars = require('handlebars')
 const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
 const session = require('express-session')
+//middleware
+const varMiddleware = require('./middleware/variables')
 //Routes
 const courses = require('./routes/courses')
 const home = require('./routes/home')
@@ -12,9 +14,6 @@ const add = require('./routes/add')
 const card = require('./routes/card')
 const orders = require('./routes/orders')
 const auth = require('./routes/auth')
-//model
-const User = require('./models/user')
-
 
 const app = express()
 
@@ -28,18 +27,13 @@ app.engine('hbs', hbs.engine)
 app.set('view engine', 'hbs')
 app.set('views', 'views')
 
-app.use(async (req, res, next) => {
-    try {
-        req.user = await User.findById('5ffc648a23577b0300bffcc1')
-        next()
-    } catch (e) {
-        console.error(e)
-    }
-})
-
 app.use(session({
-
+    secret: 'some secret',
+    resave: false,
+    saveUninitialized: false
 }))
+
+app.use(varMiddleware)
 
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.urlencoded({extended: true}))
@@ -62,15 +56,6 @@ async function start() {
             useUnifiedTopology: true,
             useFindAndModify: false
         })
-        const candidate = await User.findOne()
-        if (!candidate) {
-            const user = new User({
-                email: 'ash1999_2011@mail.ru',
-                name: 'Ashot',
-                bag: {items: []}
-            })
-            await user.save()
-        }
         app.listen(PORT, () => {
             console.log(`server is running on Port ${PORT} `)
         })
@@ -78,7 +63,6 @@ async function start() {
         console.error(e)
     }
 }
-
 start().catch()
 
 

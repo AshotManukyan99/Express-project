@@ -61,15 +61,6 @@ if ($card) {
     })
 }
 
-function getData(data) {
-    const {someVar} = data
-    console.log(someVar)
-}
-
-function getNewData({someVar}) {
-    console.log(someVar)
-}
-
 M.Tabs.init(document.querySelectorAll('.tabs'))
 
 
