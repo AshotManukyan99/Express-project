@@ -6,10 +6,11 @@ const user = new Schema({
         type: String,
         required: true
     },
-    name: {
+    password: {
         type: String,
         required: true
     },
+    name: String,
     bag: {
         items: [
             {

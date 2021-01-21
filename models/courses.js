@@ -13,7 +13,8 @@ const course = new Schema({
     url: String,
     userId: {
         type: Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'User',
+        default: 0
     }
 })
 

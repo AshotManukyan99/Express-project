@@ -1,7 +1,6 @@
 <h2>List All Courses</h2>
 
 
-
 {{#if course.length}}
     {{#each course}}
         <div class="row">
@@ -16,11 +15,13 @@
                     </div>
                     <div class="card-action actions ">
                         <a href="/courses/{{id}}" target="_blank">Open Course</a>
-                        <a href="/courses/{{id}}/edit?allow=true">Edit Course</a>
-                        <form action="/card/add" method="post">
-                            <input type="hidden" name="id" value="{{id}}">
-                            <button type="submit" class="btn btn-primary">Take This Course</button>
-                        </form>
+                        {{#if @root.isAuth}}
+                            <a href="/courses/{{id}}/edit?allow=true">Edit Course</a>
+                            <form action="/card/add" method="post">
+                                <input type="hidden" name="id" value="{{id}}">
+                                <button type="submit" class="btn btn-primary">Take This Course</button>
+                            </form>
+                        {{/if}}
                     </div>
                 </div>
             </div>
