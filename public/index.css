@@ -51,3 +51,12 @@
 .remember-checkbox {
     margin-right: 15px;
 }
+
+.alert {
+    padding: .5rem 1rem;
+    border-radius: 12px;
+    text-align: center;
+    margin-bottom: 1rem;
+    background: rgba(255, 0, 0, .3);
+    color: red;
+}

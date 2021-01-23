@@ -1,5 +1,9 @@
 const express = require('express')
 const path = require('path')
+const bodyParser = require('body-parser')
+const csrf = require('csurf')
+const flash = require('connect-flash')
+const cookieParser = require('cookie-parser')
 const expHbs = require('express-handlebars')
 const mongoose = require('mongoose')
 const Handlebars = require('handlebars')
@@ -40,9 +44,16 @@ app.use(session({
     secret: 'some secret',
     resave: false,
     saveUninitialized: false,
+    cookie: {
+        httpOnly: true,
+        sameSite: 'strict'
+    },
     store
 }))
-
+app.use(bodyParser.urlencoded({extended: true}))
+app.use(cookieParser())
+app.use(csrf({cookie: true}))
+app.use(flash())
 app.use(varMiddleware)
 app.use(userMiddleware)
 

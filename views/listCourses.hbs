@@ -18,6 +18,7 @@
                         {{#if @root.isAuth}}
                             <a href="/courses/{{id}}/edit?allow=true">Edit Course</a>
                             <form action="/card/add" method="post">
+                                <input type="hidden" name="_csrf" value="{{@root.csrf}}">
                                 <input type="hidden" name="id" value="{{id}}">
                                 <button type="submit" class="btn btn-primary">Take This Course</button>
                             </form>

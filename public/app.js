@@ -34,11 +34,16 @@ if ($card) {
         if (event.target.classList.contains('js-remove')) {
             const id = event.target.dataset.id
 
-            fetch('/card/remove/' + id, {method: 'delete'})
+            fetch('/card/remove/' + id, {
+                method: 'delete',
+                headers: {
+                    'X-CSRF-TOKEN': event.target.dataset.csrf
+                }
+            })
                 .then(res => res.json())
                 .then(card => {
                     if (card.courses.length) {
-                        const html = card.courses.map(c => {
+                        $card.querySelector('tbody').innerHTML = card.courses.map(c => {
                             return `
                              <tr>
                                   <td>${c.name}</td>
@@ -50,7 +55,6 @@ if ($card) {
                                 `
                         }).join('')
 
-                        $card.querySelector('tbody').innerHTML = html
                         $card.querySelector('.price').textContent = toCurrency(card.price)
 
                     } else {
