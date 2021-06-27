@@ -21,7 +21,7 @@ const card = require('./routes/card')
 const orders = require('./routes/orders')
 const auth = require('./routes/auth')
 
-const MONGO_URL = `mongodb+srv://manukyan:cr7fanam7@cluster0.c36ue.mongodb.net/shop`
+const MONGO_URL = `mongodb+srv://ash_manukyan:cr7fanam7@cluster0.ucmvu.mongodb.net/test`
 
 const app = express()
 
