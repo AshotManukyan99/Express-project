@@ -10,6 +10,8 @@ const user = new Schema({
         type: String,
         required: true
     },
+    resetToken: String,
+    resetTokenExp: Date,
     name: String,
     bag: {
         items: [

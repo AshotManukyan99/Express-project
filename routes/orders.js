@@ -16,7 +16,6 @@ function mapOrders(orders) {
     }))
 }
 
-
 router.get('/', auth, async (req, res) => {
     try {
         const orders = await Order.find({'user.userId': req.user._id})
@@ -32,7 +31,6 @@ router.get('/', auth, async (req, res) => {
         console.error(e)
     }
 })
-
 
 router.post('/', auth, async (req, res) => {
     try {

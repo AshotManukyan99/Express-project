@@ -20,20 +20,20 @@ const add = require('./routes/add')
 const card = require('./routes/card')
 const orders = require('./routes/orders')
 const auth = require('./routes/auth')
-
-const MONGO_URL = `mongodb+srv://ash_manukyan:cr7fanam7@cluster0.ucmvu.mongodb.net/test`
+const keys = require('./keys/index')
 
 const app = express()
 
 const hbs = expHbs.create({
     defaultLayout: 'main',
     extname: 'hbs',
-    handlebars: allowInsecurePrototypeAccess(Handlebars)
+    handlebars: allowInsecurePrototypeAccess(Handlebars),
+    helpers: require('./utils/hbs-helpers.js')
 })
 
 const store = new MongoStore({
     collection: 'session',
-    uri: MONGO_URL
+    uri: keys.MONGO_URL
 })
 
 app.engine('hbs', hbs.engine)
@@ -72,7 +72,7 @@ const PORT = process.env.PORT || 3000
 
 async function start() {
     try {
-        await mongoose.connect(MONGO_URL, {
+        await mongoose.connect(keys.MONGO_URL, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
             useFindAndModify: false
