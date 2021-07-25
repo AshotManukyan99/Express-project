@@ -5,6 +5,8 @@ const keys = require('../keys/index')
 const crypto = require('crypto')
 const msg = require('../emails/registration')
 const resetEmail = require('../emails/reset')
+const {validationResult} = require('express-validator')
+const {registerValidators} = require('../utils/validators')
 //model
 const User = require('../models/user')
 
@@ -60,27 +62,27 @@ router.post('/login', async (req, res) => {
     }
 })
 
-router.post('/register', async (req, res) => {
+router.post('/register', registerValidators, async (req, res) => {
     try {
-        const {email, password, confirm, name} = req.body
+        const {email, password, name} = req.body
 
-        const candidate = await User.findOne({email})
+        const errors = validationResult(req)
 
-        if (candidate) {
-            req.flash('register', 'user with this email already exists')
-            res.redirect('register')
-        } else {
-            const hashPassword = await bcrypt.hash(password, 10)
-            const user = new User({
-                email,
-                password: hashPassword,
-                name,
-                bag: {items: []}
-            })
-            await user.save()
-            res.redirect('login')
-            await sgMail.send(msg(email))
+        if (!errors.isEmpty()) {
+            req.flash('register', errors.array()[0].msg)
+            return res.status(422).redirect('/auth/login#register')
         }
+
+        const hashPassword = await bcrypt.hash(password, 10)
+        const user = new User({
+            email,
+            password: hashPassword,
+            name,
+            bag: {items: []}
+        })
+        await user.save()
+        res.redirect('login')
+        await sgMail.send(msg(email))
 
     } catch (e) {
         console.error(e)

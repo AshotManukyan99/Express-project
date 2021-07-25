@@ -35,6 +35,12 @@
                     <li><a href="/orders">Orders</a></li>
                 {{/if }}
 
+                {{#if isProfile}}
+                    <li class="active"><a href="/profile">My Profile</a></li>
+                {{else}}
+                    <li><a href="/profile">My Profile</a></li>
+                {{/if}}
+
                 <li><a href="/auth/logout">Logout</a></li>
 
             {{else}}

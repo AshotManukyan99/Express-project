@@ -61,3 +61,8 @@
     color: red;
     text-transform: uppercase;
 }
+
+.avatar {
+    max-width: 280px;
+    height: auto;
+}

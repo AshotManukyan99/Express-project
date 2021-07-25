@@ -1,5 +1,4 @@
 const {Router} = require('express')
-
 //Models
 const Course = require('../models/courses')
 const router = Router()

@@ -13,6 +13,7 @@ const user = new Schema({
     resetToken: String,
     resetTokenExp: Date,
     name: String,
+    avatarUrl: String,
     bag: {
         items: [
             {
