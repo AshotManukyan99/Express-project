@@ -6,6 +6,7 @@ const flash = require('connect-flash')
 const cookieParser = require('cookie-parser')
 const expHbs = require('express-handlebars')
 const mongoose = require('mongoose')
+const compression = require('compression')
 const Handlebars = require('handlebars')
 const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
 const session = require('express-session')
@@ -54,13 +55,14 @@ app.use(session({
     store
 }))
 app.use(express.static(path.join(__dirname, 'public')))
-app.use('/images',express.  static(path.join(__dirname, 'images')))
+app.use('/images', express.static(path.join(__dirname, 'images')))
 app.use(express.urlencoded({extended: true}))
 app.use(fileMiddleware.single('avatar'))
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(cookieParser())
 app.use(csrf({cookie: true}))
 app.use(flash())
+app.use(compression())
 app.use(varMiddleware)
 app.use(userMiddleware)
 
@@ -93,6 +95,6 @@ async function start() {
     }
 }
 
-start().catch()
+start()
 
 
